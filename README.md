@@ -4,6 +4,7 @@ change the directory names to your liking ig, but the venv one should stay the s
 ```
 ❯ git clone https://github.com/twistedttea/stroll webproj && cd ./webproj
 ❯ mkdir env_webproject && python3 -m venv env_webproject && source env_webproject/bin/activate
+❯ pip install -r requirements.txt
 ```
 For testing run something like
 ```
