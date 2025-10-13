@@ -4,7 +4,9 @@ from django.db.models import Count
 
 
 def post_list(request):
+    # Pull from database
     name_lookup = request.GET.get("name", None)
+    # grab all dogs
     dog = Doggy.objects.all()
 
     if name_lookup:
@@ -19,12 +21,13 @@ def post_list(request):
 
     return render(
         request,
-        #
+        # Send post request to post.html, which uses it.
+        # this is what will send all the data back to the site
         "post.html",
         {
             "dog name": dog,
             "owner": owner,
-            "user_with_posts": user_with_posts,
+            "user_with_dog": user_with_dog,
             "total_posts": total_posts,
         },
     )
