@@ -9,7 +9,7 @@ class User(models.Model):
         abstract = true
 
 
-class Walker(models.Model):
+class Walker(User):
     name = models.CharField(max_length=50)
 
     def __str__(self):
