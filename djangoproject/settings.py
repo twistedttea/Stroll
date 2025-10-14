@@ -78,11 +78,12 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
+    # TODO This user MUST be REMOVED. It has full access.
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.db.backends.mysql",
         "NAME": "USERS",
-        "USER": "django_admin",
-        "PASSWORD": "password",
+        "USER": "grifter",
+        "PASSWORD": "passwordisnotastrongpassword",
         "HOST": "localhost",
         "PORT": "",
     }

@@ -1,7 +1,6 @@
 from django.contrib import admin
-from home.models import *
+from .models import *
 
 # Register your models here.
-admin.site.register(User)
 admin.site.register(Walker)
 admin.site.register(Doggy)
