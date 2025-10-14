@@ -10,7 +10,7 @@ class User(models.Model):
         return self.name
 
     class Meta:
-        abstract = true
+        abstract = True
 
 
 class Walker(User):
