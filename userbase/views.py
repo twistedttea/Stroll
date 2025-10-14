@@ -3,7 +3,7 @@ from userbase.models import Doggy
 from django.db.models import Count
 
 
-def post_list(request):
+def dog_list(request):
     # Pull from database
     name_lookup = request.GET.get("name", None)
     # grab all dogs
