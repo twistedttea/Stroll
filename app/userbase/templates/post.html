@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog List</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dog List</h1>
+    <form action="" method="get">
+        <label for="user_filter">Filter by User:</label>
+        <select name="user" id="user_filter">
+            <option value="">All Users</option>
+            {% for user in users %}
+            <option value="{{ user }}" {% if user_filter==user %}selected{% endif %}>{{ user }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Apply Filter</button>
+    </form>
+    <h2>Total Dogs: {{ total_dogs }}</h2>
+    <h2>Dogs per User:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Number of Dogs</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user_with_dogs in users_with_dogs %}
+            <tr>
+                <td>{{ user_with_dogs.dog_name }}</td>
+                <td>{{ user_with_dogs.num_dogs }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>Filtered Dogs:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>User</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- TODO import the proper info here, extend dog class -->
+            {% for post in dogs %}
+            <tr>
+                <td>{{ post.title }}</td>
+                <td>{{ post.content }}</td>
+                <td>{{ post.user.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

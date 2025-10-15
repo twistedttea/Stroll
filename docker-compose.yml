@@ -7,6 +7,7 @@ services:
     restart: always
     volumes:
        - ./staticfiles:/app/staticfiles
+       - ./app:/app
     ports:
        - "8000:8000"
     environment:

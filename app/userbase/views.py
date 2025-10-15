@@ -13,7 +13,7 @@ def dog_list(request):
         dog = dog.filter(user__name=name_lookup)
 
     # FIXME I left out changing after user__name > num_posts....
-    user_with_dog = Doggy.objects.values("user__name").annotate(num_posts=Count("id"))
+    user_with_dog = Doggy.objects.values("dog_name").annotate(num_posts=Count("id"))
     total_posts = Doggy.objects.count()
 
     # Extract the username from user_with_dog
