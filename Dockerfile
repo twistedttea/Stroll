@@ -31,10 +31,10 @@ COPY requirements.txt  /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the Django project to the container
-COPY . /app/
+COPY app/ /app/
 
 # Expose the Django port
 EXPOSE 8000
 
 # Start the application using Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "blogproject.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "djangoproject.wsgi:application"]

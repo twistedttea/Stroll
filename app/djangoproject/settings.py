@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from os import getenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "userbase",
+    "wait_for_db",
 ]
 
 MIDDLEWARE = [
@@ -81,11 +83,11 @@ DATABASES = {
     # TODO This user MUST be REMOVED. It has full access.
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "USERS",
-        "USER": "grifter",
-        "PASSWORD": "passwordisnotastrongpassword",
-        "HOST": "localhost",
-        "PORT": "",
+        "NAME": os.getenv("DB_NAME"),  # Name of your MySQL database
+        "USER": os.getenv("DB_USER"),  # MySQL username
+        "PASSWORD": os.getenv("DB_PASSWORD"),  # MySQL password
+        "HOST": os.getenv("DB_HOST"),  # MySQL service name
+        "PORT": "3306",  # MySQL default port
     }
 }
 
