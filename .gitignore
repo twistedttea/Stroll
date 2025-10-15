@@ -2,3 +2,4 @@ env_webproject
 .env
 djangoproject/__pycache__
 staticfiles
+README.org
