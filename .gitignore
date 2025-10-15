@@ -1,2 +1,3 @@
 env_webproject
+.env
 djangoproject/__pycache__
