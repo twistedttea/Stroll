@@ -1,5 +1,7 @@
 env_webproject
 .env
-djangoproject/__pycache__
+app/djangoproject/__pycache__
 staticfiles
 README.org
+env_stroll
+*.sqlite3
