@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "userbase",
     "wait_for_db",
+    "database_testing",
 ]
 
 MIDDLEWARE = [
