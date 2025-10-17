@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "userbase",
     "wait_for_db",
     "database_testing",
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
