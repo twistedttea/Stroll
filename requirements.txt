@@ -10,8 +10,8 @@ idna==3.10
 packaging==25.0
 psycopg==3.2.10
 psycopg2-binary==2.9.11
-mysqlclient==2.2.4
 django_wait_for_db==1.0.6
+mysqlclient==2.2.4
 PySocks==1.7.1
 requests==2.32.5
 soupsieve==2.8
