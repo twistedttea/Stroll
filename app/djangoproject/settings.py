@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "userbase",
+    "wait_for_db",
 ]
 
 MIDDLEWARE = [
@@ -74,19 +76,19 @@ WSGI_APPLICATION = "djangoproject.wsgi.application"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-    # TODO This user MUST be REMOVED. It has full access.
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "USERS",
-        "USER": "grifter",
-        "PASSWORD": "passwordisnotastrongpassword",
-        "HOST": "localhost",
-        "PORT": "",
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # TODO This user MUST be REMOVED. It has full access.
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": os.getenv("DB_NAME"),  # Name of your MySQL database
+    #     "USER": os.getenv("DB_USER"),  # MySQL username
+    #     "PASSWORD": os.getenv("DB_PASSWORD"),  # MySQL password
+    #     "HOST": os.getenv("DB_HOST"),  # MySQL service name
+    #     "PORT": "3306",  # MySQL default port
+    # }
 }
 
 
@@ -105,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+    }
 ]
 
 
@@ -124,8 +126,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_ROOT = "/app/staticfiles"
 
+# The URL Django will use to serve the files (often /static/)
+STATIC_URL = "static/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 

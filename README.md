@@ -1,20 +1,25 @@
-* [ ] Hello bro.
-These are unix commands im too lazy to find windows ones
-change the directory names to your liking ig, but the venv one should stay the same please
-```
-❯ git clone https://github.com/twistedttea/stroll webproj && cd ./webproj
-❯ mkdir env_webproject && python3 -m venv env_webproject && source env_webproject/bin/activate
-```
-requires mysql server
-```
-sudo apt-get install python3-dev default-libmysqlclient-dev build-essential pkg-config
-sudo systemctl start mysql.service
-pip install -r requirements.txt
+# Hello bro.
+## Instructions
+This requires [Docker](https://docs.docker.com/compose/install/)
+
+This also requires an .env file, which is purposefully ignored in every commit. \
+**Please** do not force it in, just grab it from the discord on first clone and you should be good to go.
+
+While inside of the root of the project, for initial run please ->
+``` sh
+docker compose up -d --build
 ```
 
-For testing run something like
-```
-❯ python manage.py runserver 0.0.0.0:8000
+To stop the server (if it's a daemon)
+``` sh
+docker compose down
 ```
 
+## In the event of a build failure, please hit me up, maybe try these.
 
+This deletes the created volumes, WILL WIPE LOCAL DB 
+``` sh
+docker compose down -v
+```
+
+You can also get rid of the -d option when you are debugging for more verbosity
