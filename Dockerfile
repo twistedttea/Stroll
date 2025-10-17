@@ -14,10 +14,10 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # Install system dependencies (gcc, mysql-client for MySQL database connection, curl for Node.js)
-RUN apt update && apt install -y \
-    gcc \
-    default-libmysqlclient-dev \
-    && rm -rf /var/lib/apt/lists/*
+# RUN apt update && apt install -y \
+#     gcc \
+#     default-libmysqlclient-dev \
+#     && rm -rf /var/lib/apt/lists/*
 
 # Upgrade pip
 RUN pip install --upgrade pip

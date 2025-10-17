@@ -19,9 +19,6 @@ services:
        - DEBUG=${DEBUG}
        - DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
        - CSRF_TRUSTED_ORIGINS=${CSRF_TRUSTED_ORIGINS}
-    depends_on:
-      db: # Make sure the database service starts first
-        condition: service_healthy
     env_file:
        - .env
     command: >
@@ -30,23 +27,3 @@ services:
              python manage.py migrate &&
              python manage.py collectstatic --noinput &&
              gunicorn --bind 0.0.0.0:8000 djangoproject.wsgi:application"
-  db:
-    image: mysql:8.0.41
-    volumes:
-       - mysql_db:/var/lib/mysql # Persist the database data
-    environment:
-       - MYSQL_USER=${DB_USER}
-       - MYSQL_PASSWORD=${DB_PASSWORD}
-       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} # Use the root password from .env file
-       - MYSQL_DATABASE=${DB_NAME} # The database name from .env file
-    ports:
-       - "3306:3306" # MySQL default port
-    env_file:
-       - .env
-    healthcheck:
-       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u$$MYSQL_USER", "-p$$MYSQL_PASSWORD"]
-       timeout: 20s
-       retries: 10
-       interval: 3s
-volumes:
-  mysql_db: # Named volume for MySQL data persistence

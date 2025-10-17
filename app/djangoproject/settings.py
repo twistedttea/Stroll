@@ -76,19 +76,19 @@ WSGI_APPLICATION = "djangoproject.wsgi.application"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-    # TODO This user MUST be REMOVED. It has full access.
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.getenv("DB_NAME"),  # Name of your MySQL database
-        "USER": os.getenv("DB_USER"),  # MySQL username
-        "PASSWORD": os.getenv("DB_PASSWORD"),  # MySQL password
-        "HOST": os.getenv("DB_HOST"),  # MySQL service name
-        "PORT": "3306",  # MySQL default port
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # TODO This user MUST be REMOVED. It has full access.
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": os.getenv("DB_NAME"),  # Name of your MySQL database
+    #     "USER": os.getenv("DB_USER"),  # MySQL username
+    #     "PASSWORD": os.getenv("DB_PASSWORD"),  # MySQL password
+    #     "HOST": os.getenv("DB_HOST"),  # MySQL service name
+    #     "PORT": "3306",  # MySQL default port
+    # }
 }
 
 
@@ -107,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+    }
 ]
 
 

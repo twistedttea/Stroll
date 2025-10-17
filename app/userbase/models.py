@@ -4,10 +4,9 @@ from django.db import models
 class User(models.Model):
 
     name = models.CharField(max_length=50)
-    email = models.CharField(max_length=50)
 
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name
 
     class Meta:
         abstract = True
@@ -25,11 +24,11 @@ class Walker(User):
         return self.name
 
 class Owner(User):
-
+    pass
     
     
 
-class Doggy(User):
+class Doggy(models.Model):
     # This is the dog class that defines just name at the moment.
     dog_name = models.CharField(max_length=50)
 
