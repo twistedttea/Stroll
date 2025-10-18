@@ -1,37 +1,43 @@
 from django.db import models
 
+# please note that django provides a user paradim already. (im not looking up how to spell that.)
 
-class User(models.Model):
 
-    name = models.CharField(max_length=50)
-
-    # def __str__(self):
-    #     return self.name
+class Walker(models.Model):
+    """
+    Extension of the User model that already exists within django
+    This should carry the permissions that an walker would have on top,
+    as well as any additional needed info, such as location
+    """
 
     class Meta:
-        abstract = True
+        permissions = [("", "")]
 
 
-class Walker(User):
-    # This is going to be a subclass under user that defines data access, and what can be stored.
-    # Will append on the CRUD methods l8r
+class Owner(models.Model):
+    """
+    Extension of the User model that already exists within django
+    This should carry the permissions that an owner would have on top,
+    as well as any additional needed info.
+    """
 
-    
+    class Meta:
+        permissions = [("", "")]
 
-    # return the to the struct
-    # This acts as the "name" of the string, not what is stored
-    def __str__(self):
-        return self.name
-
-class Owner(User):
-    pass
-    
-    
 
 class Doggy(models.Model):
-    # This is the dog class that defines just name at the moment.
-    dog_name = models.CharField(max_length=50)
+    """
+    Stores a name, charfield of len 50
+    Stores an owner, a foreign key. When owner deleted, all "Doggy" as well
+    FIXME Store weight :: cap weight and verify type. Cap to one decimal
+    FIXME Store age :: cap age and verify type.
+    TODO Store an list of temperments
+    like permissions but more
+    maybe in the form ( lazy, True or False ) as a tuple?
+    """
 
-    # return the name to the struct
-    def __str__(self):
-        return self.dog_name
+    dog_name = models.CharField(max_length=50)
+    weight = models.PositiveFloat()
+    age = models.PositiveInt()
+    # TODO Fill in second field
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
